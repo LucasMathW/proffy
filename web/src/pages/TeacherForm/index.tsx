@@ -38,7 +38,7 @@ function TeacherForm() {
         ]);
     }
     
-    function setNewScheduleItemValue(position: number, field: string, value:  string){
+    function setNewScheduleItemValue(position: number, field: string, value: string){
         const newArray = scheduleItems.map( (scheduleItem, index) => {
                 
                 if(index === position){
@@ -68,32 +68,29 @@ function TeacherForm() {
         }).then(()=> {
             alert("Cadastro realizado com Sucesso!");
 
+            //DEPOIS DE INSERIR USUARIO NOVO, RETORNA A PARAGINA DE INICIO
             history.push('/');
         }).catch(()=>{
             alert("Erro no Formulário!")
         })
-
-        console.log({
-             name,
-             avatar,
-             whatsApp,
-             bio,
-             subject,
-             cost,
-             scheduleItems
-         })
+    
     }
 
     return (
         <div id="page-teacher-form" className="container">
+             
+            {/* COMPONENTE DO CABECALHO DA PAGINA */}
              <PageHeader 
              title="Que incrível que você quer dar aulas"
              description="O primeiro passo é preencher esse formulário de inscrição"
              />
 
+            {/* CORPO PRINCIPAL DA PAGINA  */}
              <main>
 
+                {/* FORMULARIO DE CADASTRO PARA PROFESSORES */}
                 <form onSubmit={handleCreateClass}>
+                    
                  <fieldset>
                     <legend>Seus dados</legend>
 
@@ -214,12 +211,12 @@ function TeacherForm() {
                     
                  </fieldset>
 
+                {/* RODAPE DA PAGINA  */}
                  <footer>
 
                      <p>
                          <img src={waringIcon} alt="Aviso Importânte"/> 
                          Inportante! <br/>
-
                          Preencha todos os dados
                      </p>
 

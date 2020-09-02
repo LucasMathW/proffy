@@ -142,7 +142,12 @@
     }
 
     #page-teacher-form main footer p{
+        display: flex;
         justify-content: space-between;
+    }
+
+    #page-teacher-form main footer p img{
+        margin-right: 2.0rem;
     }
 
     #page-teacher-form main footer button{
