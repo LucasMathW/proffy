@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, ScrollView, Text } from 'react-native'
+import { View, ScrollView, Text, KeyboardAvoidingView } from 'react-native'
 import styles from './styles'
 import PageHeader from '../../Components/PageHeader'
 import TeacherItem, { Teacher } from '../../Components/TeacherItem'
@@ -66,6 +66,7 @@ function TeacherList(){
 
     return(
         <View style={styles.container}>
+           <KeyboardAvoidingView behavior="position"> 
             <PageHeader 
             title="Proffys disponíveis"
             headerRight={(
@@ -76,6 +77,7 @@ function TeacherList(){
             >
 
                { isFilterVisible && (
+
                     <View style={styles.searchForm}>
                             <Text style={styles.label}>Matéria</Text>
                             <TextInput 
@@ -124,7 +126,7 @@ function TeacherList(){
 
                         </View>)}
             </PageHeader>
-            
+            </KeyboardAvoidingView>
             <ScrollView 
             style={styles.teacherList}
             contentContainerStyle={{
