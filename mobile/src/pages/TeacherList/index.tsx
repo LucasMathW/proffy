@@ -75,7 +75,6 @@ function TeacherList(){
                 </BorderlessButton>
             )}
             >
-
                { isFilterVisible && (
 
                     <View style={styles.searchForm}>
