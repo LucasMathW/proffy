@@ -12,8 +12,6 @@ interface ScheduleItem {
 export default class classesController {
     
     async index(req:Request, res:Response){
-
-      console.log(req.query);
       
       const filters = req.query;
 
@@ -39,7 +37,6 @@ export default class classesController {
                     .whereRaw('`class_schedule`.`week_day` = ??', [ Number(week_day) ])
                     .whereRaw('`class_schedule`.`from` <= ??', [timesInMinutes])
                     .whereRaw('`class_schedule`.`to` > ??', [timesInMinutes])
-
                  })
                 .where('classes.subject', '=',  subject)
                 .join('users', 'classes.user_id', '=', 'users.id')
@@ -72,7 +69,7 @@ export default class classesController {
        
            const user_id = insertedUserIds[0]
        
-           const insertedClassesIds = await trx('classes').insert({
+   to      const insertedClassesIds = await trx('classes').insert({
                subject,
                cost,
                user_id,
@@ -80,7 +77,7 @@ export default class classesController {
        
            const class_id  = insertedClassesIds[0]
        
-           const classSchedule = schedule.map((scheduleItem: ScheduleItem) =>{
+           const classSchedule = schedule.map((scheduleItem: ScheduleItem) => {
                return{
                    class_id,
                    week_day: scheduleItem.week_day,
@@ -90,7 +87,7 @@ export default class classesController {
            }) 
         
             await trx('class_schedule').insert(classSchedule)
-       
+        
             await trx.commit();
     
             return res.status(201).send();
